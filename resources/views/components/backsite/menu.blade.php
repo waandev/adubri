@@ -20,13 +20,16 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="la la-users"></i>
-                    <span data-i18n="Accounts">Users</span>
-                    <span class="badge badge badge-pill badge-success float-right mt-0"></span>
-                </a>
-            </li>
+            @if (Auth::check() && Auth::user()->role_user()->first()->role_id == 1)
+                <li
+                    class="nav-item {{ request()->is('backsite/user') || request()->is('backsite/user/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('backsite.user.index') }}">
+                        <i class="la la-users"></i>
+                        <span data-i18n="Accounts">Users</span>
+                        <span class="badge badge badge-pill badge-success float-right mt-0">{{ $totalUser }}</span>
+                    </a>
+                </li>
+            @endif
 
         </ul>
     </div>
