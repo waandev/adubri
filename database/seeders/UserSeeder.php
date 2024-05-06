@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         $user = [
             [
-                'name'           => 'Admin',
+                'name'           => 'Super Admin',
                 'email'          => 'admin@gmail.com',
                 'password'       => Hash::make('asw&a198'),
                 'remember_token' => null,
