@@ -1,48 +1,77 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <x-validation-errors class="mb-4" />
+@section('title', 'Login')
 
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ $value }}
+@section('content')
+
+    <div class="min-h-screen">
+        <div class="grid lg:grid-cols-2">
+            <!-- Form-->
+            <div class="px-4 lg:px-[91px] pt-10 bg-[#F9FBFC]">
+
+                <div class="flex flex-col justify-center py-14 h-screen lg:min-h-screen">
+                    <h2 class="text-[#1E2B4F] text-3xl font-semibold leading-normal">
+                        Pengaduan Layanan BRI
+                    </h2>
+
+                    <div class="mt-4">
+
+                        @if (session('status'))
+                            <div class="mb-4 font-medium text-sm text-green-600">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                        <!-- Form input -->
+                        <form method="POST" action="{{ route('login') }}" class="grid gap-6">
+
+                            {{-- token here --}}
+                            @csrf
+
+                            <label class="block">
+                                <input for="email" type="email" id="email" name="email"
+                                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#012060]"
+                                    placeholder="Email Address" value="{{ old('email') }}" required autofocus />
+
+                                @if ($errors->has('email'))
+                                    <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
+                                @endif
+                            </label>
+
+                            <label class="block">
+                                <input for="password" type="password" id="password" name="password"
+                                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#012060]"
+                                    placeholder="Password" />
+
+                                @if ($errors->has('password'))
+                                    <p class="text-red mb-3 text-sm">{{ $errors->first('password') }}</p>
+                                @endif
+                            </label>
+
+                            <div class="mt-10 grid gap-6">
+                                <button
+                                    class="text-center text-white text-lg font-medium bg-[#012060] px-10 py-4 rounded-full">
+                                    Sign In
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-        @endsession
+            <!-- End Form -->
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <!-- Qoute -->
+            <div class="hidden sm:block bg-[#FFFFFF] bg-auto bg-center bg-no-repeat"
+                style="background-image: url('{{ asset('assets/auth/logo.jpeg') }}'); background-size: contain;">
+                <div class="flex flex-col justify-center h-full px-24 my-auto">
+                    <div class="relative">
+                        <!-- Konten lainnya di sini -->
+                    </div>
+                </div>
             </div>
+            <!-- End Qoute -->
+        </div>
+    </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+@endsection
