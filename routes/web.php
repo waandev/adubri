@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\UserController;
+use App\Http\Controllers\Frontsite\HomeController;
 use Illuminate\Support\Facades\Route;
+
+Route::resource('/', HomeController::class);
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {
     // Rute redirect default
