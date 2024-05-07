@@ -99,6 +99,9 @@
                                 <div class="sent-message">Your message has been sent. Thank you!</div>
                             </div>
 
+                            {!! NoCaptcha::renderJs() !!}
+                            {!! NoCaptcha::display() !!}
+
                             <div class="text-center"><button type="submit">Send Message</button></div>
                         </form>
 
