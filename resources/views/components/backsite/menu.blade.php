@@ -31,6 +31,18 @@
                 </li>
             @endif
 
+            <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#"
+                    data-toggle="dropdown"><i class="la la-cog"></i><span data-i18n="Payments">Konfigurasi</span></a>
+                <ul class="dropdown-menu">
+                    <li data-menu=""><a class="dropdown-item" href="bank-payments.html" data-toggle=""><span
+                                data-i18n="Payments">Profil</span></a>
+                    </li>
+                    <li data-menu=""><a class="dropdown-item" href="bank-add-payment.html" data-toggle=""><span
+                                data-i18n="Add New">Ganti Password</span></a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 </div>
