@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,10 @@ class UserController extends Controller
     public function index()
     {
         $totalUser = User::count();
+        $totalService = Service::count();
         $users = User::all();
 
-        return view('pages.backsite.user.index', compact('totalUser', 'users'));
+        return view('pages.backsite.user.index', compact('totalUser', 'totalService', 'users'));
     }
 
     /**

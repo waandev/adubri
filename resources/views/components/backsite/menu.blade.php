@@ -32,9 +32,10 @@
 
                 <li
                     class="nav-item {{ request()->is('backsite/service') || request()->is('backsite/service/*') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('backsite.user.index') }}">
+                    <a class="nav-link" href="">
                         <i class="la la-briefcase"></i>
                         <span data-i18n="Accounts">Layanan</span>
+                        <span class="badge badge badge-pill badge-success float-right mt-0">{{ $totalService }}</span>
                     </a>
                 </li>
             @endif

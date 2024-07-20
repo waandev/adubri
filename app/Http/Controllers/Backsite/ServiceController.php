@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Service;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Get the middleware that should be assigned to the controller.
@@ -24,11 +21,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $totalUser = User::count();
-        $totalService = Service::count();
-        $categories = Category::all();
-
-        return view('pages.backsite.dashboard.index', compact('totalUser', 'totalService', 'categories'));
+        //
     }
 
     /**
@@ -36,7 +29,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        abort(404);
+        //
     }
 
     /**
@@ -44,7 +37,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        abort(404);
+        //
     }
 
     /**
@@ -52,7 +45,7 @@ class DashboardController extends Controller
      */
     public function show(string $id)
     {
-        abort(404);
+        //
     }
 
     /**
@@ -60,7 +53,7 @@ class DashboardController extends Controller
      */
     public function edit(string $id)
     {
-        abort(404);
+        //
     }
 
     /**
@@ -68,7 +61,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        abort(404);
+        //
     }
 
     /**
@@ -76,6 +69,6 @@ class DashboardController extends Controller
      */
     public function destroy(string $id)
     {
-        abort(404);
+        //
     }
 }

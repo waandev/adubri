@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backsite\DashboardController;
+use App\Http\Controllers\Backsite\ServiceController;
 use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Frontsite\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -14,4 +15,6 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('dashboard', DashboardController::class);
     // user
     Route::resource('user', UserController::class);
+    // service
+    Route::resource('service', ServiceController::class);
 });
