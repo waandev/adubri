@@ -25,26 +25,17 @@
                     class="nav-item {{ request()->is('backsite/user') || request()->is('backsite/user/*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('backsite.user.index') }}">
                         <i class="la la-users"></i>
-                        <span data-i18n="Accounts">Users</span>
+                        <span data-i18n="Accounts">User</span>
                         <span class="badge badge badge-pill badge-success float-right mt-0">{{ $totalUser }}</span>
                     </a>
                 </li>
 
-                <li class="dropdown nav-item {{ request()->is('backsite/category') || request()->is('backsite/category/*') || request()->is('backsite/service') || request()->is('backsite/service/*') ? 'active' : '' }}"
-                    data-menu="dropdown">
-                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-                        <i class="la la-cog"></i>
-                        <span data-i18n="Payments">Manajemen Layanan</span>
+                <li
+                    class="nav-item {{ request()->is('backsite/service') || request()->is('backsite/service/*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('backsite.user.index') }}">
+                        <i class="la la-briefcase"></i>
+                        <span data-i18n="Accounts">Layanan</span>
                     </a>
-
-                    <ul class="dropdown-menu">
-                        <li data-menu=""><a class="dropdown-item" href="" data-toggle=""><span
-                                    data-i18n="Payments">Kategori</span></a>
-                        </li>
-                        <li data-menu=""><a class="dropdown-item" href="" data-toggle=""><span
-                                    data-i18n="Add New">Layanan</span></a>
-                        </li>
-                    </ul>
                 </li>
             @endif
 
