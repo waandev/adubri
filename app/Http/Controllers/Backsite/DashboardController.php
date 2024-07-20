@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,9 @@ class DashboardController extends Controller
     public function index()
     {
         $totalUser = User::count();
+        $categories = Category::all();
 
-        return view('pages.backsite.dashboard.index', compact('totalUser'));
+        return view('pages.backsite.dashboard.index', compact('totalUser', 'categories'));
     }
 
     /**

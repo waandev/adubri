@@ -126,48 +126,32 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-12">
                             <div class="chart-stats text-center my-5">
-                                <div class="card bg-gradient-directional-primary">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="media d-flex">
-                                                <div class="media-body text-white text-left">
-                                                    <h3 class="text-white"></h3>
-                                                    <span>Teller</span>
-                                                </div>
-                                                <div class="percentage">
-                                                    <span>%</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card bg-gradient-directional-warning">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="media d-flex">
-                                                <div class="media-body text-white text-left">
-                                                    <h3 class="text-white"></h3>
-                                                    <span>Customer Service</span>
-                                                </div>
-                                                <div class="percentage">
-                                                    <span>%</span>
+
+                                @forelse ($categories as $key => $category)
+                                    <div
+                                        class="card {{ $category->name == 'Product'
+                                            ? 'bg-gradient-directional-warning'
+                                            : ($category->name == 'E-Channel'
+                                                ? 'bg-gradient-directional-cyan'
+                                                : 'bg-gradient-directional-primary') }}">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="media d-flex">
+                                                    <div class="media-body text-white text-left">
+                                                        <h3 class="text-white"></h3>
+                                                        <span>{{ $category->name }}</span>
+                                                    </div>
+                                                    <div class="percentage">
+                                                        <span>%</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card bg-gradient-directional-cyan">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="media d-flex">
-                                                <div class="media-body text-white text-left">
-                                                    <h3 class="text-white"></h3>
-                                                    <span>Total Aduan</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @empty
+                                    {{-- not found --}}
+                                @endforelse
+
                             </div>
                         </div>
                     </div>

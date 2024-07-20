@@ -29,6 +29,23 @@
                         <span class="badge badge badge-pill badge-success float-right mt-0">{{ $totalUser }}</span>
                     </a>
                 </li>
+
+                <li class="dropdown nav-item {{ request()->is('backsite/category') || request()->is('backsite/category/*') || request()->is('backsite/service') || request()->is('backsite/service/*') ? 'active' : '' }}"
+                    data-menu="dropdown">
+                    <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
+                        <i class="la la-cog"></i>
+                        <span data-i18n="Payments">Manajemen Layanan</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li data-menu=""><a class="dropdown-item" href="" data-toggle=""><span
+                                    data-i18n="Payments">Kategori</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item" href="" data-toggle=""><span
+                                    data-i18n="Add New">Layanan</span></a>
+                        </li>
+                    </ul>
+                </li>
             @endif
 
             <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#"
