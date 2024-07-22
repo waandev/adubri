@@ -16,5 +16,5 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     // user
     Route::resource('user', UserController::class);
     // service
-    Route::resource('service', ServiceController::class);
+    Route::resource('layanan', ServiceController::class);
 });

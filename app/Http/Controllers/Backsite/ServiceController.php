@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -21,7 +24,17 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $totalUser = User::count();
+        $totalService = Service::count();
+        $categories = Category::all();
+        $services = Service::join('categories', 'services.category_id', '=', 'categories.id')
+            ->orderByRaw("FIELD(categories.name, 'people', 'product', 'e-channel')") // Urutkan kategori dengan urutan khusus
+            ->orderBy('services.name', 'asc') // Urutkan nama layanan secara ascending
+            ->select('services.*')
+            ->get();
+
+
+        return view('pages.backsite.layanan.index', compact('totalUser', 'totalService', 'categories', 'services'));
     }
 
     /**
@@ -29,7 +42,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -37,7 +50,12 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+        Service::create($data);
+
+        alert()->success('Pesan Sukses', 'Data layanan berhasil ditambahkan');
+        return redirect()->route('backsite.layanan.index');
     }
 
     /**
@@ -45,15 +63,19 @@ class ServiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        abort(404);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $totalUser = User::count();
+        $totalService = Service::count();
+        $categories = Category::all();
+        $service = Service::find($id);
+        return view('pages.backsite.layanan.edit', compact('totalUser', 'totalService', 'categories', 'service'));
     }
 
     /**
@@ -61,7 +83,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $service = Service::find($id);
+        $data = $request->all();
+
+        $service->update($data);
+
+        alert()->success('Pesan Sukses', 'Data layanan berhasil diupdate');
+        return redirect()->route('backsite.layanan.index');
     }
 
     /**
@@ -69,6 +97,11 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $service = Service::find($id);
+
+        $service->forceDelete();
+
+        alert()->success('Pesan Sukses', 'Data layanan berhasil dihapus');
+        return back();
     }
 }
