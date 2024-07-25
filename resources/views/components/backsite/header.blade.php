@@ -8,8 +8,8 @@
                         href="#"><i class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item"><a class="navbar-brand" href="index.html"><img class="brand-logo"
                             alt="modern admin logo"
-                            src="{{ asset('/assets/backsite/app-assets/images/logo/logo.png') }}">
-                        <h3 class="brand-text">Adu BRI</h3>
+                            src="{{ asset('/assets/backsite/app-assets/images/logo/logo-bri.png') }}">
+                        <h3 class="brand-text">BRITA</h3>
                     </a></li>
                 <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                         data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a></li>

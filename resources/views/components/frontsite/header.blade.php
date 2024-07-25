@@ -3,7 +3,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
         <div class="logo">
-            <h1><a href="{{ route('index') }}"><span>AduBRI</span></a></h1>
+            <h1><a href="{{ route('index') }}"><span>BRITA</span></a></h1>
         </div>
 
     </div>

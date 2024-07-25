@@ -33,7 +33,6 @@ class ServiceController extends Controller
             ->select('services.*')
             ->get();
 
-
         return view('pages.backsite.layanan.index', compact('totalUser', 'totalService', 'categories', 'services'));
     }
 

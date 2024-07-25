@@ -21,7 +21,7 @@ class Complaint extends Model
         'name',
         'email',
         'date_of_incident',
-        'decription',
+        'description',
         'created_at',
         'updated_at',
         'deleted_at'

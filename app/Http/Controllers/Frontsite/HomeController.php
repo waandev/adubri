@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Frontsite;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComplaintRequest;
+use App\Models\Category;
+use App\Models\Complaint;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.home.index');
+        $categories = Category::all();
+        return view('pages.frontsite.home.index', compact('categories'));
     }
 
     /**
@@ -26,9 +31,14 @@ class HomeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComplaintRequest $request)
     {
-        //
+        $data = $request->all();
+
+        Complaint::create($data);
+
+        alert()->success('Pesan Sukses', 'Data Aduan Anda berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -61,5 +71,12 @@ class HomeController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getServicesByCategory(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        $services = Service::where('category_id', $categoryId)->get();
+        return response()->json($services);
     }
 }

@@ -7,6 +7,8 @@ use App\Http\Controllers\Frontsite\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/', HomeController::class);
+Route::get('/get-services', [HomeController::class, 'getServicesByCategory'])->name('getServicesByCategory');
+
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {
     // Rute redirect default
