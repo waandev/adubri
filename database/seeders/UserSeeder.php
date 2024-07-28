@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
         $user = [
             [
                 'name'           => 'Super Admin',
-                'email'          => 'admin@gmail.com',
-                'password'       => Hash::make('asw&a198'),
+                'email'          => 'admin@brita3813.com',
+                'password'       => Hash::make('S^%r5v2E9pZb'),
                 'remember_token' => null,
                 'created_at'     => Carbon::now('Asia/Makassar'),
                 'updated_at'     => Carbon::now('Asia/Makassar'),
