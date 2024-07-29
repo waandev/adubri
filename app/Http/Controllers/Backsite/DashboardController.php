@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Complaint;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,9 +27,10 @@ class DashboardController extends Controller
     {
         $totalUser = User::count();
         $totalService = Service::count();
+        $totalComplaint = Complaint::count();
         $categories = Category::all();
 
-        return view('pages.backsite.dashboard.index', compact('totalUser', 'totalService', 'categories'));
+        return view('pages.backsite.dashboard.index', compact('totalUser', 'totalService', 'totalComplaint', 'categories'));
     }
 
     /**

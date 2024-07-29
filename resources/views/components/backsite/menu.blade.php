@@ -13,10 +13,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('backsite.aduan.index') }}">
                     <i class="la la-comments"></i>
                     <span data-i18n="Accounts">Aduan</span>
-                    <span class="badge badge badge-pill badge-success float-right mt-0"></span>
+                    <span class="badge badge badge-pill badge-success float-right mt-0">{{ $totalComplaint }}</span>
                 </a>
             </li>
 

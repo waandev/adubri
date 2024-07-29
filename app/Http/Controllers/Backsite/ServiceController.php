@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Complaint;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class ServiceController extends Controller
     {
         $totalUser = User::count();
         $totalService = Service::count();
+        $totalComplaint = Complaint::count();
         $categories = Category::all();
         $services = Service::join('categories', 'services.category_id', '=', 'categories.id')
             ->orderByRaw("FIELD(categories.name, 'people', 'product', 'e-channel')") // Urutkan kategori dengan urutan khusus
@@ -33,7 +35,7 @@ class ServiceController extends Controller
             ->select('services.*')
             ->get();
 
-        return view('pages.backsite.layanan.index', compact('totalUser', 'totalService', 'categories', 'services'));
+        return view('pages.backsite.layanan.index', compact('totalUser', 'totalService', 'totalComplaint', 'categories', 'services'));
     }
 
     /**

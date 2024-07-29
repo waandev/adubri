@@ -8,7 +8,7 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ComplaintController extends Controller
 {
     /**
      * Get the middleware that should be assigned to the controller.
@@ -22,14 +22,16 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $totalUser = User::count();
         $totalService = Service::count();
         $totalComplaint = Complaint::count();
-        $users = User::all();
-
-        return view('pages.backsite.user.index', compact('totalUser', 'totalService', 'totalComplaint', 'users'));
+        $complaints = Complaint::all();
+        return view('pages.backsite.aduan.index', compact('totalUser', 'totalService', 'totalComplaint', 'complaints'));
     }
 
     /**

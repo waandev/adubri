@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('date_of_incident');
             $table->longText('description');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

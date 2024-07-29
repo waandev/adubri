@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backsite\ComplaintController;
 use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\ServiceController;
 use App\Http\Controllers\Backsite\UserController;
@@ -15,6 +16,8 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::redirect('/', '/backsite/dashboard', 301)->name('index');
     // dashboard
     Route::resource('dashboard', DashboardController::class);
+    // dashboard
+    Route::resource('aduan', ComplaintController::class);
     // user
     Route::resource('user', UserController::class);
     // service
