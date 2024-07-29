@@ -51,7 +51,7 @@
                     <div class="address">
                         <i class="bi bi-geo-alt"></i>
                         <h4>Lokasi:</h4>
-                        <p>Jl. Hertasning Komp Ruko PT.Cahaya Surya No.2, Kota Makassar, Sulawesi Selatan 90231</p>
+                        <p>Jl. Hertasning Komp Ruko PT. Cahaya Surya No. 2, Kota Makassar, Sulawesi Selatan 90231</p>
                     </div>
 
                     <div class="phone">
@@ -111,7 +111,7 @@
                                     {{ $errors->first('category_id') }}</p>
                             @endif
                         </div>
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
                             <select name="service_id" id="service_id" class="form-control">
                                 <option value="{{ '' }}" disabled selected>
                                     Pilih Layanan
@@ -141,12 +141,15 @@
                         <textarea class="form-control" name="description" rows="5" placeholder="Deskripsi" required>{{ old('description') }}</textarea>
                     </div>
 
-                    {!! NoCaptcha::renderJs() !!}
-                    {!! NoCaptcha::display() !!}
-                    @if ($errors->has('g-recaptcha-response'))
-                        <p style="font-style: bold; color: red;">
-                            {{ $errors->first('g-recaptcha-response') }}</p>
-                    @endif
+                    <div class="form-group mt-3">
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                        @if ($errors->has('g-recaptcha-response'))
+                            <p style="font-style: bold; color: red;">
+                                {{ $errors->first('g-recaptcha-response') }}</p>
+                        @endif
+                    </div>
+
                     <div class="mt-3 text-center"><button type="submit">Kirim</button></div>
                 </form>
             </div>
