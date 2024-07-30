@@ -39,7 +39,7 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -47,7 +47,7 @@ class ComplaintController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -55,7 +55,11 @@ class ComplaintController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $totalUser = User::count();
+        $totalService = Service::count();
+        $totalComplaint = Complaint::count();
+        $complaint = Complaint::find($id);
+        return view('pages.backsite.aduan.show', compact('totalUser', 'totalService', 'totalComplaint', 'complaint'));
     }
 
     /**

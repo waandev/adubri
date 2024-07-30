@@ -95,7 +95,8 @@
                                                             <div class="action">
 
                                                                 <div class="badge badge-info round">
-                                                                    <a href="">
+                                                                    <a
+                                                                        href="{{ route('backsite.aduan.show', $complaint->id) }}">
                                                                         <i
                                                                             class="font-medium-2 icon-line-height la la-eye"></i>
                                                                     </a>

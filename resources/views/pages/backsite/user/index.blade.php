@@ -162,8 +162,8 @@
                                                         </td>
                                                         <td class="align-middle">
                                                             <div
-                                                                class="badge {{ $user->verification->is_verified == 1 ? 'badge-success' : 'badge-danger' }} round">
-                                                                <span>{{ $user->verification->is_verified == 1 ? 'Aktif' : 'Tidak Aktif' }}</span>
+                                                                class="ac-status badge {{ $user->verification->is_verified == 1 ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                                {{ $user->verification->is_verified == 1 ? 'Aktif' : 'Tidak Aktif' }}
                                                             </div>
                                                         </td>
                                                         <td class="align-middle">
