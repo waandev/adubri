@@ -89,7 +89,7 @@
 
                                                 <div class="form-group">
                                                     <label for="userinput8" class="sr-only">Feedback</label>
-                                                    <textarea id="userinput8" rows="5" class="form-control" name="bio" placeholder="Bio"></textarea>
+                                                    <textarea id="userinput8" rows="5" class="form-control" name="feedback" placeholder="Feedback"></textarea>
                                                 </div>
 
                                             </div>

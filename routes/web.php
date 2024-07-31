@@ -5,6 +5,7 @@ use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\ServiceController;
 use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Frontsite\HomeController;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('/', HomeController::class);
@@ -23,3 +24,5 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     // service
     Route::resource('layanan', ServiceController::class);
 });
+
+Route::get('/send-email', [MailController::class, 'sendEmail']);

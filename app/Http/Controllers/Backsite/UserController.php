@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserCreated;
 use App\Models\Complaint;
 use App\Models\Role;
 use App\Models\RoleUser;
@@ -11,6 +12,7 @@ use App\Models\User;
 use App\Models\UserVerification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -68,6 +70,8 @@ class UserController extends Controller
         UserVerification::create([
             'user_id' => $user->id,
         ]);
+
+        Mail::to($user->email)->send(new UserCreated($user, $password));
 
         alert()->success('Pesan Sukses', 'Data User berhasil ditambahkan');
         return redirect()->route('backsite.user.index');
