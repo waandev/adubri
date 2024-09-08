@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
 use App\Models\Complaint;
+use App\Models\Feedback;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -84,5 +85,18 @@ class ComplaintController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function sendFeedback(Request $request, string $id)
+    {
+        $complaint = Complaint::find($id);
+
+        Feedback::create([
+            'complaint_id' => $complaint->id,
+            'feedback' => $request->feedback,
+        ]);
+
+        alert()->success('Pesan Sukses', 'Data feedback berhasil dikirim');
+        return redirect()->route('backsite.aduan.index');
     }
 }

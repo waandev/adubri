@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('complaint_id')->nullable();
             $table->longText('feedback');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -17,9 +17,14 @@ class Feedback extends Model
 
     protected $fillable = [
         'complaint_id',
-        'name',
+        'feedback',
         'created_at',
         'updated_at',
         'deleted_at'
     ];
+
+    public function complaint()
+    {
+        return $this->belongsTo(Complaint::class, 'complaint_id', 'id');
+    }
 }

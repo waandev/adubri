@@ -19,10 +19,11 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('dashboard', DashboardController::class);
     // dashboard
     Route::resource('aduan', ComplaintController::class);
+    Route::post('/aduan/{id}/feedback', [ComplaintController::class, 'sendFeedback'])
+        ->name('aduan.sendFeedback');
+
     // user
     Route::resource('user', UserController::class);
     // service
     Route::resource('layanan', ServiceController::class);
 });
-
-Route::get('/send-email', [MailController::class, 'sendEmail']);

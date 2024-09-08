@@ -88,7 +88,7 @@
                                                         </td>
                                                         <td class="align-middle">
                                                             <div class="ac-hol-name">
-                                                                {{ $complaint->feedback ?? '' }}
+                                                                {{ $complaint->feedback->feedback ?? '' }}
                                                             </div>
                                                         </td>
                                                         <td class="align-middle">

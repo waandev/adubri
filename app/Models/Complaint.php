@@ -36,4 +36,9 @@ class Complaint extends Model
     {
         return $this->belongsTo(Service::class, 'service_id', 'id');
     }
+
+    public function feedback()
+    {
+        return $this->hasOne(Feedback::class);
+    }
 }

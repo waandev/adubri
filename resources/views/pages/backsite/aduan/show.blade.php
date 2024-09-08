@@ -84,12 +84,15 @@
                                 <div class="card-content collpase show">
                                     <div class="card-body">
 
-                                        <form class="form">
+                                        <form class="form"
+                                            action="{{ route('backsite.aduan.sendFeedback', $complaint->id) }}"
+                                            method="POST" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="form-body">
 
                                                 <div class="form-group">
                                                     <label for="userinput8" class="sr-only">Feedback</label>
-                                                    <textarea id="userinput8" rows="5" class="form-control" name="feedback" placeholder="Feedback"></textarea>
+                                                    <textarea id="userinput8" rows="5" class="form-control" name="feedback" placeholder="Feedback">{{ $complaint->feedback->feedback }}</textarea>
                                                 </div>
 
                                             </div>
