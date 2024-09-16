@@ -92,15 +92,17 @@
 
                                                 <div class="form-group">
                                                     <label for="userinput8" class="sr-only">Feedback</label>
-                                                    <textarea id="userinput8" rows="5" class="form-control" name="feedback" placeholder="Feedback">{{ $complaint->feedback->feedback }}</textarea>
+                                                    <textarea id="userinput8" rows="5" class="form-control" name="feedback" placeholder="Feedback">{{ $complaint->feedback->feedback ?? '' }}</textarea>
                                                 </div>
 
                                             </div>
 
                                             <div class="form-actions right">
-                                                <button type="submit" class="btn btn-outline-primary">
-                                                    <i class="ft-check"></i> Kirim
-                                                </button>
+                                                @if (is_null(optional($complaint->feedback)->feedback))
+                                                    <button type="submit" class="btn btn-outline-primary">
+                                                        <i class="ft-check"></i> Kirim
+                                                    </button>
+                                                @endif
                                             </div>
                                         </form>
 

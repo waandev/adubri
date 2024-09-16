@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
+use App\Mail\FeedbackCreated;
 use App\Models\Complaint;
 use App\Models\Feedback;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ComplaintController extends Controller
 {
@@ -91,10 +93,12 @@ class ComplaintController extends Controller
     {
         $complaint = Complaint::find($id);
 
-        Feedback::create([
+        $feedback =  Feedback::create([
             'complaint_id' => $complaint->id,
             'feedback' => $request->feedback,
         ]);
+
+        Mail::to($complaint->email)->send(new FeedbackCreated($complaint, $feedback->feedback));
 
         alert()->success('Pesan Sukses', 'Data feedback berhasil dikirim');
         return redirect()->route('backsite.aduan.index');
