@@ -146,6 +146,7 @@
                                                 <tr>
                                                     <th class="border-top-0">Kategori</th>
                                                     <th class="border-top-0">Nama</th>
+                                                    <th class="border-top-0">Status</th>
                                                     <th class="border-top-0">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -158,6 +159,12 @@
                                                         </td>
                                                         <td class="align-middle ">
                                                             <div class="ac-hol-name">{{ $service->name ?? '' }}</div>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <div
+                                                                class="ac-status badge {{ $service->status == 1 ? 'badge-success' : 'badge-danger' }} badge-pill badge-sm">
+                                                                {{ $service->status == 1 ? 'Aktif' : 'Tidak Aktif' }}
+                                                            </div>
                                                         </td>
 
                                                         <td class="align-middle">
@@ -195,6 +202,7 @@
                                                 <tr>
                                                     <th class="border-top-0">Kategori</th>
                                                     <th class="border-top-0">Nama</th>
+                                                    <th class="border-top-0">Status</th>
                                                     <th class="border-top-0">Aksi</th>
                                                 </tr>
                                             </tfoot>

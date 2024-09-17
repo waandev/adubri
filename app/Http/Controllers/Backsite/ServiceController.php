@@ -74,9 +74,10 @@ class ServiceController extends Controller
     {
         $totalUser = User::count();
         $totalService = Service::count();
+        $totalComplaint = Complaint::count();
         $categories = Category::all();
         $service = Service::find($id);
-        return view('pages.backsite.layanan.edit', compact('totalUser', 'totalService', 'categories', 'service'));
+        return view('pages.backsite.layanan.edit', compact('totalUser', 'totalService', 'totalComplaint', 'categories', 'service'));
     }
 
     /**

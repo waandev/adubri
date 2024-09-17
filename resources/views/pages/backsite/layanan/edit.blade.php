@@ -113,6 +113,25 @@
                                                         @endif
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="col-md-3 label-control" for="status">Status <code
+                                                            style="color: red;">required</code></label>
+                                                    <div class="col-md-9 mx-auto">
+                                                        <select name="status" id="status" class="form-control" required>
+                                                            <option value="1"
+                                                                {{ isset($service) && $service->status == 1 ? 'selected' : '' }}>
+                                                                Aktif</option>
+                                                            <option value="0"
+                                                                {{ isset($service) && $service->status == 0 ? 'selected' : '' }}>
+                                                                Non-Aktif</option>
+                                                        </select>
+
+                                                        @if ($errors->has('status'))
+                                                            <p style="font-style: bold; color: red;">
+                                                                {{ $errors->first('status') }}</p>
+                                                        @endif
+                                                    </div>
+                                                </div>
 
                                             </div>
 
