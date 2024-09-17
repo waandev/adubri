@@ -76,7 +76,10 @@ class HomeController extends Controller
     public function getServicesByCategory(Request $request)
     {
         $categoryId = $request->input('category_id');
-        $services = Service::where('category_id', $categoryId)->get();
+        $services = Service::where('category_id', $request->category_id)
+            ->where('status', 1)
+            ->get();
+
         return response()->json($services);
     }
 }

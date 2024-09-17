@@ -99,11 +99,6 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        $service = Service::find($id);
-
-        $service->forceDelete();
-
-        alert()->success('Pesan Sukses', 'Data layanan berhasil dihapus');
-        return back();
+        abort(404);
     }
 }

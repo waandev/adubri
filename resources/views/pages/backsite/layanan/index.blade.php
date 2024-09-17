@@ -177,20 +177,7 @@
                                                                             class="font-medium-2 icon-line-height la la-pencil-square"></i>
                                                                     </a>
                                                                 </div>
-                                                                <div class="badge badge-danger round">
-                                                                    <form
-                                                                        action="{{ route('backsite.layanan.destroy', $service->id) }}"
-                                                                        method="POST" style="display: inline;">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button
-                                                                            style="background: none; border: none; padding: 0; cursor: pointer; outline: none;"
-                                                                            type="submit">
-                                                                            <i
-                                                                                class="font-medium-2 icon-line-height la la-trash text-white"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
+
                                                             </div>
                                                         </td>
                                                     </tr>
