@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('complaint_id')->nullable();
+            $table->foreignId('user_id')->nullable();
             $table->longText('feedback');
             $table->timestamps();
             $table->softDeletes();

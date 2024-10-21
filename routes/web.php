@@ -19,7 +19,9 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::redirect('/', '/backsite/dashboard', 301)->name('index');
     // dashboard
     Route::resource('dashboard', DashboardController::class);
-    // dashboard
+    Route::get('/get-complaint-data', [DashboardController::class, 'getComplaintData']);
+
+    // complaint
     Route::resource('aduan', ComplaintController::class);
     Route::post('/aduan/{id}/feedback', [ComplaintController::class, 'sendFeedback'])
         ->name('aduan.sendFeedback');

@@ -95,6 +95,7 @@ class ComplaintController extends Controller
 
         $feedback =  Feedback::create([
             'complaint_id' => $complaint->id,
+            'user_id' => auth()->id(),
             'feedback' => $request->feedback,
         ]);
 

@@ -57,6 +57,7 @@
                                                     <th class="border-top-0">Deskripsi Aduan</th>
                                                     <th class="border-top-0">Tanggal Kejadian</th>
                                                     <th class="border-top-0">Feedback</th>
+                                                    <th class="border-top-0">Admin</th>
                                                     <th class="border-top-0">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -92,6 +93,11 @@
                                                             </div>
                                                         </td>
                                                         <td class="align-middle">
+                                                            <div class="ac-hol-name">
+                                                                {{ $complaint->feedback->user->name ?? '' }}
+                                                            </div>
+                                                        </td>
+                                                        <td class="align-middle">
                                                             <div class="action">
 
                                                                 <div class="badge badge-info round">
@@ -122,6 +128,7 @@
                                                     <th class="border-top-0">Deskripsi Aduan</th>
                                                     <th class="border-top-0">Tanggal Kejadian</th>
                                                     <th class="border-top-0">Feedback</th>
+                                                    <th class="border-top-0">Admin</th>
                                                     <th class="border-top-0">Aksi</th>
                                                 </tr>
                                             </tfoot>

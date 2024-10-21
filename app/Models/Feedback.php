@@ -17,6 +17,7 @@ class Feedback extends Model
 
     protected $fillable = [
         'complaint_id',
+        'user_id',
         'feedback',
         'created_at',
         'updated_at',
@@ -26,5 +27,10 @@ class Feedback extends Model
     public function complaint()
     {
         return $this->belongsTo(Complaint::class, 'complaint_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

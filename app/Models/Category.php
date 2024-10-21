@@ -26,4 +26,9 @@ class Category extends Model
     {
         return $this->hasMany(Service::class, 'category_id');
     }
+
+    public function complaints()
+    {
+        return $this->hasMany(Complaint::class);
+    }
 }
