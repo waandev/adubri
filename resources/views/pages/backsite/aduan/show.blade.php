@@ -89,21 +89,26 @@
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
-
                                                 <div class="form-group">
                                                     <label for="userinput8" class="sr-only">Feedback</label>
-                                                    <textarea id="userinput8" rows="5" class="form-control" name="feedback" placeholder="Feedback">{{ $complaint->feedback->feedback ?? '' }}</textarea>
+                                                    <textarea id="userinput8" class="form-control" name="feedback" placeholder="Feedback" oninput="autoResize(this)">{{ $complaint->feedback->feedback ?? '' }}</textarea>
                                                 </div>
-
                                             </div>
 
-                                            <div class="form-actions right">
-                                                @if (is_null(optional($complaint->feedback)->feedback))
-                                                    <button type="submit" class="btn btn-outline-primary">
-                                                        <i class="ft-check"></i> Kirim
-                                                    </button>
-                                                @endif
-                                            </div>
+                                            @if (!is_null(optional($complaint->feedback)->user) && !is_null(optional($complaint->feedback->user)->name))
+                                                <div class="form-actions left">
+                                                    Oleh : {{ $complaint->feedback->user->name }}
+                                                </div>
+                                            @else
+                                                <div class="form-actions right">
+                                                    @if (is_null(optional($complaint->feedback)->feedback))
+                                                        <button type="submit" class="btn btn-outline-primary">
+                                                            <i class="ft-check"></i> Kirim
+                                                        </button>
+                                                    @endif
+                                                </div>
+                                            @endif
+
                                         </form>
 
                                     </div>
@@ -117,3 +122,20 @@
         </div>
     </div>
 @endsection
+
+@push('after-script')
+    <script>
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+
+        // Optionally, call autoResize on page load to adjust height if textarea has pre-filled content
+        document.addEventListener("DOMContentLoaded", function() {
+            const textarea = document.getElementById("userinput8");
+            if (textarea) {
+                autoResize(textarea);
+            }
+        });
+    </script>
+@endpush
